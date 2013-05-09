@@ -18,7 +18,6 @@ if [ -d ~/.vim/bundle/nerdtree.git ]; then
     echo "Plugin already installed, updating..."
     cd ~/.vim/bundle/nerdtree.git
     git pull
-    cd - > /dev/null
 else
     git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree.git
 fi
@@ -29,7 +28,6 @@ if [ -d ~/.vim/bundle/vim-colors-solarized.git ]; then
     echo "Plugin already installed, updating..."
     cd ~/.vim/bundle/vim-colors-solarized.git
     git pull
-    cd - > /dev/null
 else
     git clone git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized.git
 fi
