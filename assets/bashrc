@@ -36,6 +36,8 @@ export VISUAL="vim"
 # for tmux: export screen-256color
 [ -n "$TMUX" ] && export TERM="screen-256color" || export TERM="xterm-256color"
 
+eval `dircolors ~/.dir_colors`
+
 export PATH=$HOME/bin:$PATH
 
 alias ls='ls --color=auto -h --group-directories-first'
@@ -47,4 +49,3 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 alias nomcopter='ssh -p 484 nomcopter@nomcopter.com'
-

@@ -12,9 +12,12 @@ clone-or-pull()
     fi
 }
 
-echo "Installing oh-my-zsh"
-curl -kL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+if [ ! -d ~/.oh-my-zsh ]; then
+    echo "Installing oh-my-zsh"
+    curl -kL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+fi
 
+echo "Installing zsh-syntax-highlighting"
 mkdir -p ~/.oh-my-zsh/custom/plugins
 clone-or-pull git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 

@@ -23,6 +23,8 @@ export VISUAL="vim"
 # for tmux: export screen-256color
 [ -n "$TMUX" ] && export TERM="screen-256color" || export TERM="xterm-256color"
 
+eval `dircolors ~/.dir_colors`
+
 export PATH=$HOME/bin:$PATH
 
 alias ls='ls --color=auto -h --group-directories-first'

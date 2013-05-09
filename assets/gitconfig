@@ -1,0 +1,11 @@
+[user]
+    name = Kevin Verdieck
+    email = pieisgood2@gmail.com
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[merge]
+    tool = vimdiff
+[push]
+    default = matching
