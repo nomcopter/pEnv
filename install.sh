@@ -1,44 +1,42 @@
 #!/bin/bash
 
-# oh-my-zsh
+# clone-or-pull repo-location folder-destination
+clone-or-pull() 
+{
+    if [ -d $2 ]; then
+        echo "Plugin already installed, updating..."
+        cd $2
+        git pull
+    else
+        git clone $1 $2
+    fi
+}
+
 echo "Installing oh-my-zsh"
 curl -kL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 
 mkdir -p ~/.oh-my-zsh/custom/plugins
-git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+clone-or-pull git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
-# pathogen.vim
 echo "Installing pathogen.vim"
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 curl -kso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
-# nerdtree.vim
 echo "Installing nerdtree.vim"
-if [ -d ~/.vim/bundle/nerdtree.git ]; then
-    echo "Plugin already installed, updating..."
-    cd ~/.vim/bundle/nerdtree.git
-    git pull
-else
-    git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree.git
-fi
+clone-or-pull https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree.git
 
 # solarized.vim
 echo "Installing solarized.vim"
-if [ -d ~/.vim/bundle/vim-colors-solarized.git ]; then
-    echo "Plugin already installed, updating..."
-    cd ~/.vim/bundle/vim-colors-solarized.git
-    git pull
-else
-    git clone git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized.git
-fi
+clone-or-pull git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized.git
 
 echo "Installing RC files"
-for rc in vimrc tmux.conf zshrc bashrc
+for path in ~/.pEnv/assets/*
 do
-  if [ -f ~/.$rc ]; then
-    mv ~/.$rc{,.bak}
-  fi
-  ln -sf ~/.pEnv/assets/$rc ~/.$rc
+    name=$(basename $path)
+    if [ -f ~/.$name ]; then
+        mv ~/.$name{,.bak}
+    fi
+    ln -sf $path ~/.$name
 done
 
 echo "Installation complete!"

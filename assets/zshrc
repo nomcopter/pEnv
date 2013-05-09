@@ -20,10 +20,8 @@ alias vi="vim"
 export EDITOR="vim"
 export VISUAL="vim"
 
-export TERM="xterm-256color"
-
 # for tmux: export screen-256color
-[ -n "$TMUX" ] && export TERM="screen-256color"
+[ -n "$TMUX" ] && export TERM="screen-256color" || export TERM="xterm-256color"
 
 export PATH=$HOME/bin:$PATH
 
