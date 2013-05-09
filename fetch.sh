@@ -10,6 +10,9 @@ if [ "$ynInstall" == "y" ]; then
   fi
 fi
 
-git clone https://github.com/nomcopter/pEnv.git ~/.pEnv
+read -p "Have you installed your ssh key into github?" ynInstall
+[ "$ynInstall" == "y" ] && url="git@github.com:nomcopter/pEnv.git" || url="https://github.com/nomcopter/pEnv.git"
+
+git clone $url ~/.pEnv
 
 exec ~/.pEnv/install.sh

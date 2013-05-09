@@ -18,17 +18,6 @@ curl -kL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh |
 mkdir -p ~/.oh-my-zsh/custom/plugins
 clone-or-pull git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
-echo "Installing pathogen.vim"
-mkdir -p ~/.vim/autoload ~/.vim/bundle
-curl -kso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-
-echo "Installing nerdtree.vim"
-clone-or-pull https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree.git
-
-# solarized.vim
-echo "Installing solarized.vim"
-clone-or-pull git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized.git
-
 echo "Installing RC files"
 for path in ~/.pEnv/assets/*
 do
@@ -38,5 +27,12 @@ do
     fi
     ln -sf $path ~/.$name
 done
+
+echo "Installing Vundle"
+mkdir -p ~/.vim/bundle
+clone-or-pull https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+echo "Vundling vim plugins"
+vim +BundleInstall +qall
 
 echo "Installation complete!"

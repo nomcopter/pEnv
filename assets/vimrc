@@ -1,76 +1,159 @@
-set nocompatible	" Use Vim defaults instead of 100% vi compatibility
-set backspace=indent,eol,start	" more powerful backspacing
+" =============================================================================
+"                               General settings
+" =============================================================================
+set nocompatible        " iMproved.
 
-" Now we set some defaults for the editor
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-
-" modelines have historically been a source of security/resource
-" vulnerabilities -- disable by default, even when 'nocompatible' is set
-" set nomodeline
-
-" Suffixes that get lower priority when doing tab completion for filenames.
-" These are files we are not likely to want to edit or read.
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-
-" Vim5 and later versions support syntax highlighting. Uncommenting the
-" following enables syntax highlighting by default.
-if has("syntax")
-  syntax on
-endif
-
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-" set background=dark
-
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
-"if has("autocmd")
-"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
-
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-if has("autocmd")
-  filetype plugin indent on
-endif
-
-" The following are commented out as they cause vim to behave a lot
-" differently from regular Vi. They are highly recommended though.
-set showcmd		" Show (partial) command in status line.
-set showmatch		" Show matching brackets.
-set ignorecase		" Do case insensitive matching
-set smartcase		" Do smart case matching
-set incsearch		" Incremental search
-set number
-"set autowrite		" Automatically save before commands like :next and :make
-"set hidden             " Hide buffers when they are abandoned
-set mouse=a		" Enable mouse usage (all modes)
-
-set autoread
-set hlsearch
-set magic
-set ai
-set si
-set wrap
-set expandtab
+set autoindent          " Copy indent from current line on starting a new line.
+"set smartindent         " And be smart about it
 set smarttab
-set shiftwidth=4
-set softtabstop=4
+set backspace=indent,eol,start " Backspacing over everything in insert mode.
+set hidden              " Allow for putting dirty buffers in background.
+set history=1024        " Lines of command history
+set ignorecase          " Case-insensitive search
+set smartcase           " Override ignorecase when searching uppercase.
+set incsearch           " Jumps to search word as you type.
+set modeline            " Enables modelines.
+set wildmode=longest,list:full " How to complete <Tab> matches.
+"set tildeop            " Makes ~ an operator.
+set virtualedit=block   " Support moving in empty space in block mode.
+set mouse=a             " Enables mouse usage (all modes)
+set magic               " Improves default search
+set autoread            " Prompt to reread a file if it changes
+set wrap
 
-set t_Co=256
+" Low priority for these files in tab-completion.
+set suffixes+=.aux,.bbl,.blg,.dvi,.log,.pdf,.fdb_latexmk
+set suffixes+=.info,.out,.o,.lo,.bak,~,.swp,.o,.info,.log
 
-call pathogen#infect()
+set viminfo='20,\"500
+
+scriptencoding utf-8
+
+" =============================================================================
+"                                   Styling
+" =============================================================================
+set background=dark     " Syntax highlighting for a dark terminal background.
+set hlsearch            " Highlight search results.
+set ruler               " Show the cursor position all the time.
+set showbreak=…         " Highlight non-wrapped lines.
+set showcmd             " Display incomplete command in bottom right corner.
+set showmatch           " Show matching brackets
+set number              " Display line numbers
+
+if has('gui_running')
+    set columns=80
+    set lines=25
+    set guioptions-=T   " Remove the toolbar.
+    set guifont=Monaco:h11
+    set transparency=5
+
+    " Disable MacVim-specific Cmd/Alt key mappings.
+    if has("gui_macvim")
+      let macvim_skip_cmd_opt_movement = 1
+    endif
+else
+    set t_Co=256        " We use 256 color terminal emulators these days.
+endif
+
+" Folding
+if version >= 600
+    set foldenable
+    set foldmethod=marker
+endif
+
+" =============================================================================
+"                                  Formatting
+" =============================================================================
+set formatoptions=tcrqn " See :h 'fo-table for a detailed explanation.
+set nojoinspaces        " Don't insert two spaces when joining after [.?!].
+set copyindent          " Copy the structure of existing indentation
+set expandtab           " Expand tabs to spaces.
+set tabstop=4           " number of spaces for a <Tab>.
+set shiftwidth=4        " Tab indention
+"set textwidth=79        " Text width
+
+" Indentation Tweaks.
+" e-s = do not indent if opening bracket is not first character in a line.
+" g0  = do not indent C++ scope declarations.
+" t0  = do not indent a function's return type declaration.
+" (0  = line up with next non-white character after unclosed parentheses...
+" W4  = ...but not if the last character in the line is an open parenthesis.
+set cinoptions=e-s,g0,t0,(0,W4
+
+" =============================================================================
+"                               Custom Functions
+" =============================================================================
+
+
+
+" =============================================================================
+"                                 Key Bindings
+" =============================================================================
 
 :command NT NERDTreeToggle
-
-"au VimEnter * NERDTree
-"au VimEnter * wincmd p
 
 map! jj <Esc>
 map gr gT
 map j gj
 map k gk
 
-colorscheme solarized
-set background=dark
+" Clear last search highlighting
+nnoremap <CR> :noh<CR><CR>
+
+" Toggle list mode (display unprintable characters).
+nnoremap <F11> :set list!<CR>
+
+" Toggle paste mode.
+set pastetoggle=<F12>
+
+" =============================================================================
+"                                    Vundle
+" =============================================================================
+
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'DamienCassou/textlint'
+Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'scrooloose/nerdtree'
+Bundle 'godlygeek/tabular'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+
+" Solarized
+"let g:solarized_menu = 0
+"let g:solarized_termtrans = 1
+"let g:solarized_contrast = 'high'
+"let g:solarized_hitrail = 1
+"if !has('gui_running')
+"  let g:solarized_termcolors = 256
+"end
+silent! colorscheme solarized
+
+" LaTeX Suite: Prevents Vim 7 from setting filetype to 'plaintex'.
+let g:tex_flavor = 'latex'
+
+" Needs to be executed after Vundle.
+filetype plugin indent on
+
+" =============================================================================
+"                                Filetype Stuff
+" =============================================================================
+
+if &t_Co > 2 || has('gui_running')
+  syntax on
+endif
+
+if has("spell")
+  autocmd BufRead,BufNewFile *.dox  set spell
+  autocmd Filetype mail             set spell
+  autocmd Filetype tex              set spell
+endif
+
+" vim: set fenc=utf-8 sw=2 sts=2 foldmethod=marker :
