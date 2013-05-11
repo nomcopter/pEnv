@@ -22,7 +22,7 @@ mkdir -p ~/.oh-my-zsh/custom/plugins
 clone-or-pull git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 echo "Installing RC files"
-for path in ~/.pEnv/assets/*
+for path in ~/.pEnv/assets/rcs/*
 do
     name=$(basename $path)
     if [ -f ~/.$name ]; then
