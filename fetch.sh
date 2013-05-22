@@ -8,6 +8,9 @@ if [ "$ynInstall" == "y" ]; then
   elif command -v yum > /dev/null; then
     sudo yum install $PACKAGES
   fi
+  elif command -v brew > /dev/null; then
+    brew install $PACKAGES
+  fi
 fi
 
 read -p "Have you installed your ssh key into github? [yn] " ynInstall
