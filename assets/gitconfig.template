@@ -1,6 +1,6 @@
 [user]
-    name = Kevin Verdieck
-    email = kverdieck@palantir.com
+    name = {{NAME}}
+    email = {{EMAIL}}
 [color]
     diff = auto
     status = auto

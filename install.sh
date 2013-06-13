@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "Updating pEnv.."
+cd ~/.pEnv
+git pull
 
 # clone-or-pull repo-location folder-destination
 clone-or-pull() 
@@ -22,36 +25,53 @@ backup-and-link()
 }
 
 if [ ! -d ~/.oh-my-zsh ]; then
-    echo "Installing oh-my-zsh"
+    echo
+    echo "Installing oh-my-zsh..."
     curl -kL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 fi
 
-echo "Installing zsh-syntax-highlighting"
+echo
+echo "Installing zsh-syntax-highlighting..."
 mkdir -p ~/.oh-my-zsh/custom/plugins
 clone-or-pull git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
-echo "Installing RC files"
+if [ ! -f ~/.pEnv/assets/rcs/gitconfig ]; then
+    echo
+    echo "Setting up Git..."
+    echo "Enter your personal information for commits"
+    read -p " Name: " name
+    read -p "Email: " email
+    sed -e "s/{{NAME}}/$name/" -e "s/{{EMAIL}}/$email/" ~/.pEnv/assets/gitconfig.template > ~/.pEnv/assets/rcs/gitconfig
+fi
+
+echo
+echo "Installing RC files..."
 for path in ~/.pEnv/assets/rcs/*
 do
     name=$(basename $path)
     backup-and-link $path ~/.$name
 done
 
-echo "Installing Vundle"
+echo
+echo "Installing Vundle..."
 mkdir -p ~/.vim/bundle
 clone-or-pull https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-echo "Vundling vim plugins"
+echo
+echo "Vundling vim plugins..."
 vim +BundleInstall! +qall
 
-echo "Installing custom vim filetypes"
+echo
+echo "Installing custom vim filetypes..."
 backup-and-link ~/.pEnv/assets/filetype.vim ~/.vim/filetype.vim
 
-read -p "Install solarized into gnome-terminal? [yn] " ynInstall
+echo
+read -p "Install solarized into gnome-terminal? [yN] " ynInstall
 if [ "$ynInstall" == "y" ]; then
     git clone https://github.com/sigurdga/gnome-terminal-colors-solarized /tmp/colors
     /tmp/colors/install.sh
     rm -rf /tmp/colors
 fi
 
+echo
 echo "Installation complete!"
