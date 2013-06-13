@@ -7,7 +7,6 @@ if [ "$ynInstall" == "y" ]; then
     sudo aptitude install $PACKAGES
   elif command -v yum > /dev/null; then
     sudo yum install $PACKAGES
-  fi
   elif command -v brew > /dev/null; then
     brew install $PACKAGES
   fi
