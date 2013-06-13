@@ -1,7 +1,4 @@
 #!/bin/bash
-echo "Updating pEnv.."
-cd ~/.pEnv
-git pull
 
 # clone-or-pull repo-location folder-destination
 clone-or-pull() 
