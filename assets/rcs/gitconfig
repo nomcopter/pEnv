@@ -1,11 +1,15 @@
 [user]
     name = Kevin Verdieck
-    email = pieisgood2@gmail.com
+    email = kverdieck@palantir.com
 [color]
     diff = auto
     status = auto
     branch = auto
 [merge]
     tool = vimdiff
+[diff]
+    tool = vimdiff
 [push]
     default = matching
+[difftool]
+	prompt = false

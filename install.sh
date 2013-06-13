@@ -47,4 +47,11 @@ vim +BundleInstall! +qall
 echo "Installing custom vim filetypes"
 backup-and-link ~/.pEnv/assets/filetype.vim ~/.vim/filetype.vim
 
+read -p "Install solarized into gnome-terminal? [yn] " ynInstall
+if [ "$ynInstall" == "y" ]; then
+    git clone https://github.com/sigurdga/gnome-terminal-colors-solarized /tmp/colors
+    /tmp/colors/install.sh
+    rm -rf /tmp/colors
+fi
+
 echo "Installation complete!"
