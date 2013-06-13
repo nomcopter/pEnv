@@ -12,4 +12,4 @@
 [push]
     default = matching
 [difftool]
-	prompt = false
+    prompt = false
