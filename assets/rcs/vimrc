@@ -40,20 +40,7 @@ set showcmd             " Display incomplete command in bottom right corner.
 set showmatch           " Show matching brackets
 set number              " Display line numbers
 
-if has('gui_running')
-    set columns=80
-    set lines=25
-    set guioptions-=T   " Remove the toolbar.
-    set guifont=Monaco:h11
-    set transparency=5
-
-    " Disable MacVim-specific Cmd/Alt key mappings.
-    if has("gui_macvim")
-      let macvim_skip_cmd_opt_movement = 1
-    endif
-else
-    set t_Co=256        " We use 256 color terminal emulators these days.
-endif
+set t_Co=256            " We use 256 color terminal emulators these days.
 
 " Folding
 if version >= 600
@@ -97,6 +84,11 @@ map gr gT
 map j gj
 map k gk
 
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
 " Clear last search highlighting
 nnoremap <CR> :noh<CR><CR>
 
@@ -128,6 +120,12 @@ Bundle 'tpope/vim-markdown'
 Bundle 'jakar/vim-json'
 Bundle 'nono/vim-handlebars'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'lunaru/vim-less'
+Bundle 'Lokaltog/vim-powerline'
+
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_colorscheme = 'solarized256'
+set laststatus=2
 
 " Solarized
 "let g:solarized_menu = 0
