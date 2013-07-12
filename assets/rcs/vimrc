@@ -19,7 +19,8 @@ set virtualedit=block   " Support moving in empty space in block mode.
 set mouse=a             " Enables mouse usage (all modes)
 set magic               " Improves default search
 set autoread            " Prompt to reread a file if it changes
-set wrap
+set wrap                " Wraps long lines
+set scrolloff=5         " Always shows five lines of vertical context around the cursor
 
 " Low priority for these files in tab-completion.
 set suffixes+=.aux,.bbl,.blg,.dvi,.log,.pdf,.fdb_latexmk
@@ -35,7 +36,7 @@ scriptencoding utf-8
 set background=dark     " Syntax highlighting for a dark terminal background.
 set hlsearch            " Highlight search results.
 set ruler               " Show the cursor position all the time.
-set showbreak=…         " Highlight non-wrapped lines.
+set showbreak=↪         " Highlight non-wrapped lines.
 set showcmd             " Display incomplete command in bottom right corner.
 set showmatch           " Show matching brackets
 set number              " Display line numbers
@@ -77,7 +78,10 @@ set cinoptions=e-s,g0,t0,(0,W4
 "                                 Key Bindings
 " =============================================================================
 
+let mapleader=","
+
 :command NT NERDTreeToggle
+map <F2> :NERDTreeToggle<CR>
 
 map! jj <Esc>
 map gr gT
@@ -120,12 +124,16 @@ Bundle 'tpope/vim-markdown'
 Bundle 'jakar/vim-json'
 Bundle 'nono/vim-handlebars'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'lunaru/vim-less'
+Bundle 'groenewege/vim-less'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'kien/ctrlp.vim'
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized256'
 set laststatus=2
+
+let g:EasyMotion_leader_key = '<Leader>'
 
 " Solarized
 "let g:solarized_menu = 0
