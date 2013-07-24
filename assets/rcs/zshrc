@@ -44,6 +44,8 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+alias glg="git log --graph --decorate --abbrev-commit --date=local --all"
+
 alias nomcopter='ssh -p 484 nomcopter@nomcopter.com'
 
 # Source user-specific customizations.
