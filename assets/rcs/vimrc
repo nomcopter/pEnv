@@ -94,13 +94,13 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Clear last search highlighting
-nmap <CR> :noh<CR><CR>
+nnoremap <CR> :noh<CR><CR>
 
 " Toggle list mode (display unprintable characters).
-nmap <F11> :set list!<CR>
+nnoremap <F11> :set list!<CR>
 
 " Close everything quickly
-nmap QQ :qa<CR>
+nnoremap QQ :qa<CR>
 
 " Toggle paste mode.
 set pastetoggle=<F12>
