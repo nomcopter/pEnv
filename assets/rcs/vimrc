@@ -72,8 +72,6 @@ set cinoptions=e-s,g0,t0,(0,W4
 "                               Custom Functions
 " =============================================================================
 
-
-
 " =============================================================================
 "                                 Key Bindings
 " =============================================================================
@@ -124,6 +122,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-surround'
 Bundle 'jakar/vim-json'
 Bundle 'nono/vim-handlebars'
 Bundle 'kchmck/vim-coffee-script'
@@ -131,12 +130,15 @@ Bundle 'groenewege/vim-less'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
+Bundle 'jistr/vim-nerdtree-tabs'
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized256'
 set laststatus=2
 
 let g:EasyMotion_leader_key = '<Leader>'
+
+let g:nerdtree_tabs_open_on_console_startup=1
 
 " Solarized
 "let g:solarized_menu = 0

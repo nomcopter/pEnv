@@ -28,13 +28,15 @@ linux*)
 esac
 
 alias vi="vim"
+alias vint="vim +NT"
 export EDITOR="vim"
 export VISUAL="vim"
 
+# COLORS
 # for tmux: export screen-256color
 [ -n "$TMUX" ] && export TERM="screen-256color" || export TERM="xterm-256color"
-
 eval `dircolors ~/.dir_colors`
+export GREP_COLOR=35
 
 alias ls='ls --color=auto -h --group-directories-first'
 alias ll='ls -alF'
