@@ -50,6 +50,18 @@ do
 done
 
 echo
+echo "Setting up fonts..."
+backup-and-link ~/.pEnv/assets/fonts ~/.fonts
+fc-cache -vf ~/.fonts
+if [ -d ~/.config ]; then
+    mkdir -p ~/.config/fontconfig/conf.d/
+    backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+else
+    mkdir -p ~/.fonts.conf.d/
+    backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.fonts.conf.d/
+fi
+
+echo
 echo "Installing Vundle..."
 mkdir -p ~/.vim/bundle
 clone-or-pull https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
