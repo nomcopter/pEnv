@@ -3,8 +3,8 @@ PACKAGES="vim tmux zsh git"
 
 read -p "Attempt install of helpful packages? [yn] " ynInstall
 if [ "$ynInstall" == "y" ]; then
-  if command -v aptitude > /dev/null; then
-    sudo aptitude install $PACKAGES
+  if command -v apt-get > /dev/null; then
+    sudo apt-get install $PACKAGES
   elif command -v yum > /dev/null; then
     sudo yum install $PACKAGES
   elif command -v brew > /dev/null; then
