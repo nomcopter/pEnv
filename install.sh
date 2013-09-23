@@ -18,7 +18,8 @@ backup-and-link()
     if [ -f $2 ] && [ ! -L $2 ]; then
         mv $2{,.bak}
     fi
-    ln -sf $1 $2
+    rm -f $2
+    ln -s $1 $2
 }
 
 if [ ! -d ~/.oh-my-zsh ]; then
