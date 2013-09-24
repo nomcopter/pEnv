@@ -56,10 +56,10 @@ backup-and-link ~/.pEnv/assets/fonts ~/.fonts
 fc-cache -vf ~/.fonts
 if [ -d ~/.config ]; then
     mkdir -p ~/.config/fontconfig/conf.d/
-    backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+    backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
 else
     mkdir -p ~/.fonts.conf.d/
-    backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.fonts.conf.d/
+    backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.fonts.conf.d/10-powerline-symbols.conf
 fi
 
 echo
@@ -85,3 +85,5 @@ fi
 
 echo
 echo "Installation complete!"
+command -v zsh < /dev/null || echo "Install zsh for the best user experience"
+command -v tmux < /dev/null || echo "Install tmux for the best user experience, a script to build it locally is in ~/.pEnv/tools/"
