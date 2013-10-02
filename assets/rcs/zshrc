@@ -31,6 +31,8 @@ alias vi="vim"
 alias vint="vim +NT"
 export EDITOR="vim"
 export VISUAL="vim"
+export LC_ALL="en_US.utf-8"
+export LANG="$LC_ALL"
 
 # COLORS
 # for tmux: export screen-256color
