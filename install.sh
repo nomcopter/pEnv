@@ -31,7 +31,7 @@ fi
 echo
 echo "Installing zsh-syntax-highlighting..."
 mkdir -p ~/.oh-my-zsh/custom/plugins
-clone-or-pull git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+clone-or-pull https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 if [ ! -f ~/.pEnv/assets/rcs/gitconfig ]; then
     echo
@@ -85,5 +85,5 @@ fi
 
 echo
 echo "Installation complete!"
-command -v zsh < /dev/null || echo "Install zsh for the best user experience"
-command -v tmux < /dev/null || echo "Install tmux for the best user experience, a script to build it locally is in ~/.pEnv/tools/"
+command -v zsh > /dev/null || echo "Install zsh for the best user experience"
+command -v tmux > /dev/null || echo "Install tmux for the best user experience, a script to build it locally is in ~/.pEnv/tools/"
