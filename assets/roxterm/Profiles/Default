@@ -1,0 +1,8 @@
+[roxterm profile]
+colour_scheme=solarized-dark
+font=Monaco 11
+maximise=1
+hide_menubar=1
+always_show_tabs=0
+allow_bold=0
+scrollbar_pos=0

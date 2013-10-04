@@ -15,7 +15,7 @@ clone-or-pull()
 # backup-and-link asset dest
 backup-and-link()
 {
-    if [ -f $2 ] && [ ! -L $2 ]; then
+    if [ -e $2 ] && [ ! -L $2 ]; then
         mv $2{,.bak}
     fi
     rm -f $2
@@ -54,13 +54,10 @@ echo
 echo "Setting up fonts..."
 backup-and-link ~/.pEnv/assets/fonts ~/.fonts
 fc-cache -vf ~/.fonts
-if [ -d ~/.config ]; then
-    mkdir -p ~/.config/fontconfig/conf.d/
-    backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
-else
-    mkdir -p ~/.fonts.conf.d/
-    backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.fonts.conf.d/10-powerline-symbols.conf
-fi
+mkdir -p ~/.config/fontconfig/conf.d/
+backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
+mkdir -p ~/.fonts.conf.d/
+backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.fonts.conf.d/10-powerline-symbols.conf
 
 echo
 echo "Installing Vundle..."
@@ -76,14 +73,9 @@ echo "Installing custom vim filetypes..."
 backup-and-link ~/.pEnv/assets/filetype.vim ~/.vim/filetype.vim
 
 echo
-read -p "Install solarized into gnome-terminal? [yN] " ynInstall
-if [ "$ynInstall" == "y" ]; then
-    git clone https://github.com/sigurdga/gnome-terminal-colors-solarized /tmp/colors
-    /tmp/colors/install.sh
-    rm -rf /tmp/colors
-fi
+echo "Setting up ROXTerm..."
+backup-and-link ~/.pEnv/assets/roxterm  ~/.config/roxterm.sourceforge.net
 
 echo
 echo "Installation complete!"
-command -v zsh > /dev/null || echo "Install zsh for the best user experience"
-command -v tmux > /dev/null || echo "Install tmux for the best user experience, a script to build it locally is in ~/.pEnv/tools/"
+echo "It is recommended to install zsh, tmux, and roxterm if they are not already"
