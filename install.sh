@@ -78,4 +78,4 @@ backup-and-link ~/.pEnv/assets/roxterm  ~/.config/roxterm.sourceforge.net
 
 echo
 echo "Installation complete!"
-echo "It is recommended to install zsh, tmux, and roxterm if they are not already"
+echo "It is recommended to install zsh, tmux v1.8+, and roxterm if they are not already"
