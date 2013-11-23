@@ -52,5 +52,3 @@ alias nomcopter='ssh -p 484 nomcopter@nomcopter.com'
 
 # Source user-specific customizations.
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
