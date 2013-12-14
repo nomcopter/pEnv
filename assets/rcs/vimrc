@@ -133,6 +133,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'justinmk/vim-syntax-extra'
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized256'
@@ -172,5 +173,5 @@ if has("spell")
   autocmd Filetype tex              set spell
 endif
 
-au BufNewFile,BufRead *.hn setf cpp
+au BufNewFile,BufRead *.hn setf yacc
 " vim: set fenc=utf-8 sw=2 sts=2 foldmethod=marker :
