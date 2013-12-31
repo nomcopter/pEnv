@@ -134,6 +134,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'justinmk/vim-syntax-extra'
+Bundle 'chrisbra/Recover.vim'
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized256'
