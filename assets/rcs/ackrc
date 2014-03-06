@@ -1,0 +1,4 @@
+--color-filename=yellow
+--color-match=magenta
+--context=2
+--ignore-dir=ecbuild

@@ -22,6 +22,39 @@ backup-and-link()
     ln -s $1 $2
 }
 
+case $OSTYPE in 
+darwin*)
+    echo
+    echo "Installing Homebrew..."
+    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+
+    echo "Brewing packages..."
+    brew install git zsh tmux coreutils
+
+    echo "Linking utils..."
+    mkdir -p ~/local/bin
+    backup-and-link /usr/local/bin/gdircolors ~/local/bin/dircolors
+    backup-and-link /usr/local/bin/gls ~/local/bin/ls
+
+    #TODO: Setup fonts
+    #TODO: Install/Setup iTerm2
+    ;;
+linux*)
+    echo
+    echo "Setting up fonts..."
+    backup-and-link ~/.pEnv/assets/fonts ~/.fonts
+    fc-cache -vf ~/.fonts
+    mkdir -p ~/.config/fontconfig/conf.d/
+    backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
+    mkdir -p ~/.fonts.conf.d/
+    backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.fonts.conf.d/10-powerline-symbols.conf
+
+    echo
+    echo "Setting up ROXTerm..."
+    backup-and-link ~/.pEnv/assets/roxterm  ~/.config/roxterm.sourceforge.net
+    ;;
+esac
+
 if [ ! -d ~/.oh-my-zsh ]; then
     echo
     echo "Installing oh-my-zsh..."
@@ -51,15 +84,6 @@ do
 done
 
 echo
-echo "Setting up fonts..."
-backup-and-link ~/.pEnv/assets/fonts ~/.fonts
-fc-cache -vf ~/.fonts
-mkdir -p ~/.config/fontconfig/conf.d/
-backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
-mkdir -p ~/.fonts.conf.d/
-backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.fonts.conf.d/10-powerline-symbols.conf
-
-echo
 echo "Installing Vundle..."
 mkdir -p ~/.vim/bundle
 clone-or-pull https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
@@ -71,10 +95,6 @@ vim +BundleInstall! +qall
 echo
 echo "Installing custom vim filetypes..."
 backup-and-link ~/.pEnv/assets/filetype.vim ~/.vim/filetype.vim
-
-echo
-echo "Setting up ROXTerm..."
-backup-and-link ~/.pEnv/assets/roxterm  ~/.config/roxterm.sourceforge.net
 
 echo
 echo "Installation complete!"
