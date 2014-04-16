@@ -64,6 +64,7 @@ alias glg="git log --graph --decorate --abbrev-commit --date=local --all"
 
 alias nomcopter='ssh nomcopter@nomcopter.com'
 alias armada='ssh nomcopter@armada.systems'
+alias deskcopterTunnel='nomcopter -L 3389:deskcopter.internal:3389 "/home/nomcopter/local/bin/wakeDeskcopter && echo "Tunnel opened at localhost:3389. Ctrl-D to close." && cat"'
 
 # =============================================================================
 #                     Source user-specific customizations
