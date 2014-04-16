@@ -78,7 +78,7 @@ set cinoptions=e-s,g0,t0,(0,W4
 
 let mapleader=","
 
-:command NT NERDTreeToggle
+:command NT NERDTreeTabsToggle
 map <F2> :NERDTreeToggle<CR>
 
 map! jj <Esc>

@@ -62,7 +62,8 @@ alias egrep='egrep --color=auto'
 
 alias glg="git log --graph --decorate --abbrev-commit --date=local --all"
 
-alias nomcopter='ssh -p 484 nomcopter@nomcopter.com'
+alias nomcopter='ssh nomcopter@nomcopter.com'
+alias armada='ssh nomcopter@armada.systems'
 
 # =============================================================================
 #                     Source user-specific customizations
