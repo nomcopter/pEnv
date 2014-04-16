@@ -39,7 +39,7 @@ export LANG="$LC_ALL"
 #                                    Colors
 # =============================================================================
 # for tmux: export screen-256color
-[ -n "$TMUX" ] && export TERM="screen-256color" || export TERM="xterm-256color"
+[ "$TERM" = "linux" ] || {[ -n "$TMUX" ] && export TERM="screen-256color" || export TERM="xterm-256color"}
 eval `dircolors ~/.dir_colors`
 export GREP_COLOR=35
 
