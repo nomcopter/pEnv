@@ -132,7 +132,6 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'justinmk/vim-syntax-extra'
 Bundle 'chrisbra/Recover.vim'
 
