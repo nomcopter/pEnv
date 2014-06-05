@@ -52,19 +52,23 @@ command -v gvfs-open > /dev/null && alias open='gvfs-open'
 
 alias vi="vim"
 alias vint="vim +NT"
+
 alias ls='ls --color=auto -h --group-directories-first'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias glg="git log --graph --decorate --abbrev-commit --date=local --all"
+alias ag='ag --color-path=33 --color-match=35 --context=2'
+
+alias glg="git log --graph --decorate --abbrev-commit --date=relative --all"
 
 alias nomcopter='ssh nomcopter@nomcopter.com'
 alias armada='ssh nomcopter@armada.systems'
-alias deskcopterTunnel='nomcopter -L 3389:deskcopter.internal:3389 "/home/nomcopter/local/bin/wakeDeskcopter && echo "Tunnel opened at localhost:3389. Ctrl-D to close." && cat"'
+alias deskcopterTunnel='nomcopter -L 3389:deskcopter.internal:3389 "/home/nomcopter/local/bin/wakeDeskcopter && echo \"Tunnel opened at localhost:3389. Ctrl-D to close.\" && cat"'
 
 # =============================================================================
 #                     Source user-specific customizations

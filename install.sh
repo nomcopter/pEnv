@@ -29,7 +29,7 @@ darwin*)
     ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
     echo "Brewing packages..."
-    brew install git zsh tmux coreutils
+    brew install git tmux coreutils
 
     echo "Linking utils..."
     mkdir -p ~/local/bin
@@ -98,4 +98,4 @@ backup-and-link ~/.pEnv/assets/filetype.vim ~/.vim/filetype.vim
 
 echo
 echo "Installation complete!"
-echo "It is recommended to install zsh, tmux v1.8+, and roxterm if they are not already"
+echo "It is recommended to install zsh, tmux, silversearcher-ag, and roxterm if they are not already"
