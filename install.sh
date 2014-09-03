@@ -36,8 +36,8 @@ darwin*)
     backup-and-link /usr/local/bin/gdircolors ~/local/bin/dircolors
     backup-and-link /usr/local/bin/gls ~/local/bin/ls
 
-    #TODO: Setup fonts
-    #TODO: Install/Setup iTerm2
+    # TODO: Setup fonts
+    # TODO: Install/Setup iTerm2
     ;;
 linux*)
     echo
@@ -46,8 +46,6 @@ linux*)
     fc-cache -vf ~/.fonts
     mkdir -p ~/.config/fontconfig/conf.d/
     backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
-    mkdir -p ~/.fonts.conf.d/
-    backup-and-link ~/.pEnv/assets/10-powerline-symbols.conf ~/.fonts.conf.d/10-powerline-symbols.conf
 
     echo
     echo "Setting up ROXTerm..."
