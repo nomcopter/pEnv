@@ -56,8 +56,8 @@ set formatoptions=tcrqn " See :h 'fo-table for a detailed explanation.
 set nojoinspaces        " Don't insert two spaces when joining after [.?!].
 set copyindent          " Copy the structure of existing indentation
 set expandtab           " Expand tabs to spaces.
-set tabstop=4           " number of spaces for a <Tab>.
-set shiftwidth=4        " Tab indention
+set tabstop=2           " number of spaces for a <Tab>.
+set shiftwidth=2        " Tab indention
 "set textwidth=79        " Text width
 
 " Indentation Tweaks.
@@ -81,6 +81,8 @@ let mapleader=","
 :command NT NERDTreeTabsToggle
 map <F2> :NERDTreeToggle<CR>
 
+:command CP :set invnumber | :NT
+
 map! jj <Esc>
 map gr gT
 map j gj
@@ -90,6 +92,9 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" Disable ex mode shortcut
+map Q <Nop>
 
 " Clear last search highlighting
 nnoremap <CR> :noh<CR><CR>
@@ -113,7 +118,6 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'DamienCassou/textlint'
-"Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
@@ -134,6 +138,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'justinmk/vim-syntax-extra'
 Bundle 'chrisbra/Recover.vim'
+Bundle 'rking/ag.vim'
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized256'

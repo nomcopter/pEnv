@@ -71,6 +71,13 @@ alias armada='ssh nomcopter@armada.systems'
 alias deskcopterTunnel='nomcopter -L 3389:deskcopter.internal:3389 "/home/nomcopter/local/bin/wakeDeskcopter && echo \"Tunnel opened at localhost:3389. Ctrl-D to close.\" && cat"'
 
 # =============================================================================
+#                                  Functions
+# =============================================================================
+function vim-conflicts() { 
+  vim -p +/"<<<<<<<" $( git diff --name-only --diff-filter=U | xargs )
+}
+
+# =============================================================================
 #                     Source user-specific customizations
 # =============================================================================
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
