@@ -139,6 +139,7 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'justinmk/vim-syntax-extra'
 Bundle 'chrisbra/Recover.vim'
 Bundle 'rking/ag.vim'
+Bundle 'leafgarland/typescript-vim'
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized256'
