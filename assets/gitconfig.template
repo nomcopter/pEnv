@@ -10,7 +10,7 @@
 [diff]
     tool = vimdiff
 [push]
-    default = matching
+    default = upstream
 [difftool]
     prompt = false
 [help]
