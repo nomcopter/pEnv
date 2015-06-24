@@ -3,15 +3,49 @@
 # =============================================================================
 ZSH=$HOME/.oh-my-zsh
 
-# Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="blinks" 
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(git gem rails ruby svn \
     zsh-syntax-highlighting zsh-title coffee colored-man)
 
 source $ZSH/oh-my-zsh.sh
+
+# =============================================================================
+#                                  Prompt Setup
+# =============================================================================
+
+function _prompt_char() {
+  if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+    echo "%{%F{blue}%}±%{%f%k%b%}"
+  else
+    echo ' '
+  fi
+}
+
+ZSH_THEME_GIT_PROMPT_PREFIX=" [%{%B%F{blue}%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{%f%k%b%K{${black}}%B%F{green}%}]"
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{%F{red}%}*%{%f%k%b%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+PROMPT='%{%f%k%b%}
+%{%K{${black}}%B%F{%(!|166|green)}%}%n%{%B%F{blue}%}@%{%B%F{cyan}%}%m%{%B%F{green}%} %{%b%F{yellow}%K{${black}}%}%~%{%B%F{green}%}$(git_prompt_info)%E%{%f%k%b%}
+%{%K{${black}}%}$(_prompt_char)%{%K{${black}}%} %#%{%f%k%b%} '
+
+DEFAULT_RPROMPT=""
+setopt prompt_subst
+function preexec() {
+  timer=${timer:-$SECONDS}
+}
+
+function precmd() {
+  if [ $timer ]; then
+    timer_show=$(($SECONDS - $timer))
+    export RPROMPT="%(0?||%{%F{red}%}%? )%{%F{cyan}%}${timer_show}s %{$reset_color%}"
+    unset timer
+  else
+    export RPROMPT=$DEFAULT_RPROMPT
+  fi
+}
 
 # =============================================================================
 #                              OS-specific config
