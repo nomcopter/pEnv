@@ -26,7 +26,7 @@ case $OSTYPE in
 darwin*)
     echo
     echo "Installing Homebrew..."
-    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     echo "Brewing packages..."
     brew install git tmux coreutils the_silver_searcher
