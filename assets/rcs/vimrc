@@ -141,6 +141,7 @@ Bundle 'chrisbra/Recover.vim'
 Bundle 'rking/ag.vim'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'tmux-plugins/vim-tmux-focus-events'
+Bundle 'junegunn/vim-easy-align'
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized256'
@@ -149,6 +150,8 @@ set laststatus=2
 let g:EasyMotion_leader_key = '<Leader>'
 
 let g:nerdtree_tabs_open_on_console_startup=1
+
+let g:syntastic_quiet_messages = { "type": "style" }
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
