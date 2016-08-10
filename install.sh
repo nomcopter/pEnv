@@ -22,6 +22,8 @@ backup-and-link()
     ln -s $1 $2
 }
 
+mkdir -p ~/local/bin
+
 case $OSTYPE in 
 darwin*)
     echo
@@ -29,10 +31,9 @@ darwin*)
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     echo "Brewing packages..."
-    brew install git tmux coreutils the_silver_searcher
+    brew install git tmux coreutils the_silver_searcher fzf
 
     echo "Linking utils..."
-    mkdir -p ~/local/bin
     backup-and-link /usr/local/bin/gdircolors ~/local/bin/dircolors
     backup-and-link /usr/local/bin/gls ~/local/bin/ls
 
@@ -52,6 +53,12 @@ linux*)
     backup-and-link ~/.pEnv/assets/roxterm  ~/.config/roxterm.sourceforge.net
     ;;
 esac
+
+echo
+echo "Setting up git-number..."
+backup-and-link ~/.pEnv/assets/git-number/git-number  ~/local/bin/git-number
+backup-and-link ~/.pEnv/assets/git-number/git-list    ~/local/bin/git-list
+backup-and-link ~/.pEnv/assets/git-number/git-id      ~/local/bin/git-id
 
 if [ ! -d ~/.oh-my-zsh ]; then
     echo
