@@ -21,6 +21,7 @@ set magic               " Improves default search
 set autoread            " Prompt to reread a file if it changes
 set wrap                " Wraps long lines
 set scrolloff=5         " Always shows five lines of vertical context around the cursor
+set encoding=utf8
 
 " Low priority for these files in tab-completion.
 set suffixes+=.aux,.bbl,.blg,.dvi,.log,.pdf,.fdb_latexmk
@@ -142,6 +143,7 @@ Bundle 'rking/ag.vim'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'tmux-plugins/vim-tmux-focus-events'
 Bundle 'junegunn/vim-easy-align'
+Bundle 'airblade/vim-gitgutter'
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized256'
