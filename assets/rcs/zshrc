@@ -114,6 +114,17 @@ function vim-conflicts() {
   vim -p +/"<<<<<<<" $( git diff --name-only --diff-filter=U | xargs )
 }
 
+man() {
+    env \
+        LESS_TERMCAP_mb=$'\e[31m' \
+        LESS_TERMCAP_md=$'\e[36m' \
+        LESS_TERMCAP_me=$'\e[0m' \
+        LESS_TERMCAP_se=$'\e[0m' \
+        LESS_TERMCAP_ue=$'\e[0m' \
+        LESS_TERMCAP_us=$'\e[32m' \
+            man "$@"
+}
+
 # =============================================================================
 #                     Source user-specific customizations
 # =============================================================================
