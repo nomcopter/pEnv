@@ -101,6 +101,7 @@ alias ag='ag --color-path=33 --color-match=35 --context=2'
 
 alias glg="git log --graph --decorate --abbrev-commit --date=relative"
 alias gn="git number"
+alias gds="git diff --staged -w"
 
 alias nomcopter='ssh nomcopter@nomcopter.com'
 alias armada='ssh nomcopter@armada.systems'
