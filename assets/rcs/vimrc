@@ -19,7 +19,7 @@ set virtualedit=block   " Support moving in empty space in block mode.
 set mouse=a             " Enables mouse usage (all modes)
 set magic               " Improves default search
 set autoread            " Prompt to reread a file if it changes
-set wrap                " Wraps long lines
+set nowrap              " Doesn't wrap long lines
 set scrolloff=5         " Always shows five lines of vertical context around the cursor
 set encoding=utf8
 
