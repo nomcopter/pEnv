@@ -60,6 +60,12 @@ linux*)
 esac
 
 # =============================================================================
+#                                    vi-mode
+# =============================================================================
+bindkey -v
+export KEYTIMEOUT=0
+
+# =============================================================================
 #                                  Environment
 # =============================================================================
 export PATH="$HOME/local/bin:$PATH"
@@ -101,7 +107,9 @@ alias ag='ag --color-path=33 --color-match=35 --context=2'
 
 alias glg="git log --graph --decorate --abbrev-commit --date=relative"
 alias gn="git number"
+alias gst="gn"
 alias gds="git diff --staged -w"
+alias gp="git push origin HEAD -u"
 
 alias nomcopter='ssh nomcopter@nomcopter.com'
 alias armada='ssh nomcopter@armada.systems'
