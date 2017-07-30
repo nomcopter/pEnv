@@ -23,6 +23,8 @@ backup-and-link()
 }
 
 mkdir -p ~/local/bin
+git submodule init
+git submodule update
 
 case $OSTYPE in 
 darwin*)
