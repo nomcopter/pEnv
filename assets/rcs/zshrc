@@ -110,6 +110,8 @@ alias gn="git number"
 alias gst="gn"
 alias gds="git diff --staged -w"
 alias gp="git push origin HEAD -u"
+alias gph="gp && gh"
+alias gcd="git checkout develop && git pull"
 
 alias nomcopter='ssh nomcopter@nomcopter.com'
 alias armada='ssh nomcopter@armada.systems'
@@ -120,6 +122,10 @@ alias deskcopterTunnel='nomcopter -L 3389:deskcopter.internal:3389 "/home/nomcop
 # =============================================================================
 function vim-conflicts() { 
   vim -p +/"<<<<<<<" $( git diff --name-only --diff-filter=U | xargs )
+}
+
+function gh() {
+  open `git remote get-url origin | sed -Ee 's#(git@|git://)#https://#' -e 's@:([^:]+).git$@/\1@'`
 }
 
 man() {
