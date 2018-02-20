@@ -33,7 +33,9 @@ darwin*)
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     echo "Brewing packages..."
-    brew install git tmux coreutils the_silver_searcher fzf
+    brew install git tmux coreutils the_silver_searcher fzf vim reattach-to-user-namespace
+    # Detect intelligently
+    #/usr/local/opt/fzf/install
 
     echo "Linking utils..."
     backup-and-link /usr/local/bin/gdircolors ~/local/bin/dircolors
@@ -105,4 +107,3 @@ backup-and-link ~/.pEnv/assets/filetype.vim ~/.vim/filetype.vim
 
 echo
 echo "Installation complete!"
-echo "It is recommended to install zsh, tmux, silversearcher-ag, and roxterm if they are not already"
