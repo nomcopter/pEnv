@@ -35,7 +35,7 @@ darwin*)
     echo "Brewing packages..."
     brew install git tmux coreutils the_silver_searcher fzf vim reattach-to-user-namespace
     # Detect intelligently
-    #/usr/local/opt/fzf/install
+    #$(brew --prefix)/opt/fzf/install
 
     echo "Linking utils..."
     backup-and-link /usr/local/bin/gdircolors ~/local/bin/dircolors
