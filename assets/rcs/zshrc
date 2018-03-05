@@ -104,7 +104,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias ag='ag --color-path=33 --color-match=35 --context=2'
+alias ag='ag --color-path=33 --color-match=35 --context=2 --hidden'
 
 alias glg="git log --graph --decorate --abbrev-commit --date=relative"
 alias gn="git number"
