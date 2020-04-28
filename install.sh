@@ -36,7 +36,7 @@ case $OSTYPE in
     fi
 
     echo "Brewing packages..."
-    brew install git tmux coreutils the_silver_searcher fzf vim reattach-to-user-namespace
+    brew install git tmux coreutils the_silver_searcher fzf vim reattach-to-user-namespace git-delta
     if [ ! -f ~/.fzf.zsh ]; then
       $(brew --prefix)/opt/fzf/install --key-bindings --completion
     fi

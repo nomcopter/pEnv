@@ -1,3 +1,7 @@
+[core]
+    pager = delta --dark --theme='Solarized (dark)'
+[interactive]
+    diffFilter = delta --color-only
 [user]
     name = {{NAME}}
     email = {{EMAIL}}
