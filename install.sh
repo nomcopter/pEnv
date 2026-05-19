@@ -42,8 +42,8 @@ case $OSTYPE in
     fi
 
     echo "Linking utils..."
-    backup-and-link /usr/local/bin/gdircolors ~/local/bin/dircolors
-    backup-and-link /usr/local/bin/gls ~/local/bin/ls
+    backup-and-link /opt/homebrew/bin/gdircolors ~/local/bin/dircolors
+    backup-and-link /opt/homebrew/bin/gls ~/local/bin/ls
 
     # TODO: Setup fonts
     # TODO: Install/Setup iTerm2
